@@ -1,1 +1,68 @@
-
+class Book {
+    constructor(id, title, description, author) {
+      this.id = id;
+      this.title = title;
+      this.description = description;
+      this.author = author;
+    }
+  }
+  
+  class Library {
+    constructor() {
+      this.books = [];
+    }
+  
+    addBook(bookInfo) {
+      const id = (this.books.length + 1).toString(); // Simples incremento para obter um ID único
+      const newBook = new Book(id, bookInfo.title, bookInfo.description, bookInfo.author);
+      this.books.push(newBook);
+      return newBook;
+    }
+  
+    getBooks() {
+      return this.books;
+    }
+  
+    removeBookById(id) {
+      this.books = this.books.filter(book => book.id !== id);
+    }
+  
+    getBookById(id) {
+      return this.books.find(book => book.id === id);
+    }
+  
+    updateBookById(id, info) {
+      const bookToUpdate = this.getBookById(id);
+      if (bookToUpdate) {
+        bookToUpdate.title = info.title || bookToUpdate.title;
+        bookToUpdate.description = info.description || bookToUpdate.description;
+        bookToUpdate.author = info.author || bookToUpdate.author;
+        return bookToUpdate;
+      } else {
+        console.error('Livro não encontrado');
+      }
+    }
+  }
+  
+  // Exemplo de uso:
+  const myLibrary = new Library();
+  
+  const book1 = myLibrary.addBook({
+    title: 'Lean Startup',
+    description: 'A book for help entrepreneurs to build startups',
+    author: 'Eric Ries'
+  });
+  
+  const book2 = myLibrary.addBook({
+    title: 'Eloquent JavaScript',
+    description: 'A book about JavaScript programming',
+    author: 'Marijn Haverbeke'
+  });
+  
+  console.log(myLibrary.getBooks());
+  
+  myLibrary.updateBookById(book1.id, { description: 'A classic book on JavaScript' });
+  console.log(myLibrary.getBooks());
+  
+  myLibrary.removeBookById(book2.id);
+  console.log(myLibrary.getBooks());

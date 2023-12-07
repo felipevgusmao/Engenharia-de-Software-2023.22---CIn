@@ -1,0 +1,22 @@
+// Checkbox.test.ts
+
+import Checkbox from './Checkbox';
+
+describe('Checkbox component', () => {
+  it('renders checkbox correctly', () => {
+    // Testa se o componente de checkbox é renderizado corretamente
+    // Você pode usar uma biblioteca de teste de renderização como @testing-library/react
+  });
+
+  it('handles onChange event', () => {
+    // Testa se o componente de checkbox chama a função de callback correta quando é alterado
+  });
+
+  it('is checked when isChecked prop is true', () => {
+    // Testa se o componente de checkbox é marcado quando a propriedade isChecked é verdadeira
+  });
+
+  it('is not checked when isChecked prop is false', () => {
+    // Testa se o componente de checkbox não é marcado quando a propriedade isChecked é falsa
+  });
+});
